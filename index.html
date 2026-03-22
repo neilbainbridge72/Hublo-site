@@ -1040,18 +1040,13 @@ function toggleMenu() {
       btn.textContent = 'Sending...';
       btn.disabled = true;
       try {
-        const res = await fetch('/', {
+        const formData = new FormData(e.target);
+        const res = await fetch('/thankyou.html', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(e.target)).toString()
+          body: new URLSearchParams(formData).toString()
         });
-        if (res.ok) {
-          window.location.href = '/thankyou.html';
-        } else {
-          btn.textContent = 'Send message →';
-          btn.disabled = false;
-          alert('Something went wrong — please try again or email us at info@hublo.uk');
-        }
+        window.location.href = '/thankyou.html';
       } catch(err) {
         btn.textContent = 'Send message →';
         btn.disabled = false;
