@@ -951,7 +951,7 @@ function toggleMenu() {
     function calcNights() {
       const ci = document.getElementById('r-checkin').value;
       const co = document.getElementById('r-checkout').value;
-      const wrap = document.getElementById('nights-wrap');
+      const wrap = document.getElementById('nights-field');
       const badge = document.getElementById('nights-badge');
       if (ci && co) {
         const diff = (new Date(co) - new Date(ci)) / (1000 * 60 * 60 * 24);
