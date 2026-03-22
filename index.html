@@ -926,7 +926,7 @@ function toggleMenu() {
         <p>Whether you're looking to book a stay or discuss listing your property, we'd love to hear from you.</p>
         <div class="contact-info"><span style="color:var(--terracotta);">info@hublo.uk</span><br/>0800 000 0000</div>
       </div>
-      <form class="contact-form" name="hublo-contact" method="POST" data-netlify="true" action="/thankyou.html">
+      <form class="contact-form" name="hublo-contact" method="POST" data-netlify="true" action="/thankyou.html" onsubmit="handleSubmit(event)">
         <input type="hidden" name="form-name" value="hublo-contact" />
         <input type="hidden" name="_next" value="/thankyou.html" />
         <div class="form-row" style="grid-column: 1 / -1;">
@@ -1046,9 +1046,7 @@ function toggleMenu() {
           body: new URLSearchParams(new FormData(e.target)).toString()
         });
         if (res.ok) {
-          btn.textContent = 'Message sent ✓';
-          btn.style.background = '#5a8a5a';
-          e.target.reset();
+          window.location.href = '/thankyou.html';
         } else {
           btn.textContent = 'Send message →';
           btn.disabled = false;
