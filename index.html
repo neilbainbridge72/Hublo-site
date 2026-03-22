@@ -736,6 +736,7 @@ function toggleMenu() {
               <label>Check out</label>
               <input type="date" id="r-checkout" name="check_out" />
             </div>
+            <input type="hidden" name="number_of_nights" id="r-nights-value" value="" />
             <div class="req-field" id="nights-field" style="display:none;">
               <label>&nbsp;</label>
               <div class="nights-badge" id="nights-badge"></div>
@@ -958,6 +959,7 @@ function toggleMenu() {
         if (diff > 0) {
           badge.textContent = diff + (diff === 1 ? ' night' : ' nights');
           wrap.style.display = 'block';
+          document.getElementById('r-nights-value').value = diff + (diff === 1 ? ' night' : ' nights');
         } else {
           wrap.style.display = 'none';
         }
