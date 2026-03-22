@@ -730,11 +730,11 @@ function toggleMenu() {
             </div>
             <div class="req-field">
               <label>Check in</label>
-              <input type="date" id="r-checkin" name="check_in" />
+              <input type="date" id="r-checkin" name="check_in" onchange="calcNights()" />
             </div>
             <div class="req-field">
               <label>Check out</label>
-              <input type="date" id="r-checkout" name="check_out" />
+              <input type="date" id="r-checkout" name="check_out" onchange="calcNights()" />
             </div>
             <input type="hidden" name="number_of_nights" id="r-nights-value" value="" />
             <div class="req-field" id="nights-field" style="display:none;">
@@ -905,7 +905,7 @@ function toggleMenu() {
       <div class="contact-text">
         <h2>Let's talk accommodation.</h2>
         <p>Whether you're looking to book a stay or discuss listing your property, we'd love to hear from you.</p>
-        <div class="contact-info"><span style="color:var(--terracotta);">info@hublo.uk</span><br/>0800 000 0000</div>
+        <div class="contact-info"><span style="color:var(--terracotta);">info@hublo.uk</span><br/>+44 (0) 1793 378 789 / +44 (0) 1793 269 000</div>
       </div>
       <form class="contact-form" name="hublo-contact" method="POST" data-netlify="true" action="/thankyou.html">
         <input type="hidden" name="form-name" value="hublo-contact" />
