@@ -749,6 +749,15 @@ function toggleMenu() {
               </select>
             </div>
             <div class="req-field">
+              <label>Separate beds required</label>
+              <select id="r-beds" name="separate_beds">
+                <option value="" disabled selected>Select</option>
+                <option>1</option><option>2</option><option>3</option>
+                <option>4</option><option>5</option><option>6+</option>
+                <option>Not required</option>
+              </select>
+            </div>
+            <div class="req-field">
               <label>Nightly budget</label>
               <select id="r-budget" name="budget">
                 <option value="" disabled selected>Select a range</option>
@@ -897,7 +906,7 @@ function toggleMenu() {
         <p>Whether you're looking to book a stay or discuss listing your property, we'd love to hear from you.</p>
         <div class="contact-info"><span style="color:var(--terracotta);">info@hublo.uk</span><br/>0800 000 0000</div>
       </div>
-      <form class="contact-form" name="hublo-contact" method="POST" data-netlify="true" action="/thankyou.html" onsubmit="handleSubmit(event)">
+      <form class="contact-form" name="hublo-contact" method="POST" data-netlify="true" action="/thankyou.html">
         <input type="hidden" name="form-name" value="hublo-contact" />
         <input type="hidden" name="_next" value="/thankyou.html" />
         <div class="form-row" style="grid-column: 1 / -1;">
