@@ -46,7 +46,7 @@
     }
     .nav-tagline-text {
       font-family: var(--heading);
-      font-size: 26px;
+      font-size: clamp(14px, 1.6vw, 22px);
       font-weight: 800;
       font-style: italic;
       color: var(--white);
@@ -811,7 +811,10 @@ function toggleMenu() {
 
       </div>
 
-    </form><!-- /hublo-booking -->>
+    </form><!-- /hublo-booking -->
+    <div class="form-tagline">
+      <p>..you relax, just leave it all to us</p>
+    </div>>
     </div><!-- /hero-inner -->
   </section>
 
@@ -916,7 +919,7 @@ function toggleMenu() {
           <div class="form-field"><label>First name</label><input type="text" name="first_name" placeholder="James" required /></div>
           <div class="form-field"><label>Last name</label><input type="text" name="last_name" placeholder="Miller" required /></div>
         </div>
-        <div class="form-row">
+        <div class="form-row" style="grid-column: 1 / -1;">
           <div class="form-field"><label>Email address</label><input type="email" name="email" placeholder="your@email.com" required /></div>
           <div class="form-field"><label>Phone (optional)</label><input type="tel" name="phone" placeholder="+44 7700 000000" /></div>
         </div>
