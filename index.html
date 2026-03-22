@@ -765,7 +765,7 @@ function toggleMenu() {
             </div>
             <div class="req-field req-field--full">
               <label>Any specific requirements <span class="opt">(optional)</span></label>
-              <input type="text" id="r-notes" placeholder="e.g. parking, pet friendly, ground floor, WiFi essential…" />
+              <input type="text" id="r-notes" name="requirements" placeholder="e.g. parking, pet friendly, ground floor, WiFi essential…" />
             </div>
           </div>
           <div class="req-actions">
@@ -784,19 +784,19 @@ function toggleMenu() {
           <div class="req-grid">
             <div class="req-field">
               <label>First name</label>
-              <input type="text" id="r-first" name="first_name" placeholder="James" />
+              <input type="text" id="r-first" name="guest_first_name" placeholder="James" />
             </div>
             <div class="req-field">
               <label>Last name</label>
-              <input type="text" id="r-last" name="last_name" placeholder="Miller" />
+              <input type="text" id="r-last" name="guest_last_name" placeholder="Miller" />
             </div>
             <div class="req-field">
               <label>Email address</label>
-              <input type="email" id="r-email" name="email" placeholder="your@email.com" />
+              <input type="email" id="r-email" name="guest_email" placeholder="your@email.com" />
             </div>
             <div class="req-field">
               <label>Phone number <span class="opt">(optional)</span></label>
-              <input type="tel" id="r-phone" name="phone" placeholder="+44 7700 000000" />
+              <input type="tel" id="r-phone" name="guest_phone" placeholder="+44 7700 000000" />
             </div>
             <div class="req-field req-field--full">
               <label>Company name <span class="opt">(optional)</span></label>
@@ -829,6 +829,7 @@ function toggleMenu() {
       </div>
     </div>
 
+    </form><!-- /hublo-booking -->
     </div><!-- /hero-inner -->
   </section>
 
