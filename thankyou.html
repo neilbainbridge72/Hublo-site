@@ -49,6 +49,105 @@
       .thankyou-body { padding: 120px 20px 60px; }
       footer { padding: 32px 20px; }
     }
+
+    /* ── COOKIE BANNER ── */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #0e2442; border-top: 2px solid #C95C35;
+      padding: 20px 48px; display: flex; align-items: center;
+      gap: 24px; flex-wrap: wrap;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
+    }
+    #cookie-banner p {
+      font-family: "DM Sans", sans-serif; font-size: 13px;
+      color: rgba(255,255,255,0.75); line-height: 1.6; flex: 1; min-width: 200px;
+    }
+    #cookie-banner a { color: #C95C35; text-decoration: underline; }
+    .cookie-btn-group { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
+    .cookie-btn-accept {
+      background: #C95C35; color: #fff; border: none; cursor: pointer;
+      font-family: "Montserrat", sans-serif; font-size: 12px; font-weight: 700;
+      padding: 10px 20px; border-radius: 50px; white-space: nowrap;
+    }
+    .cookie-btn-decline {
+      background: transparent; color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.2); cursor: pointer;
+      font-family: "Montserrat", sans-serif; font-size: 12px; font-weight: 500;
+      padding: 10px 20px; border-radius: 50px; white-space: nowrap;
+    }
+    .cookie-btn-manage {
+      background: transparent; color: rgba(255,255,255,0.6);
+      border: none; cursor: pointer; font-size: 12px;
+      text-decoration: underline; padding: 0;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    /* ── COOKIE PREFERENCES MODAL ── */
+    #cookie-modal {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.6);
+      display: none; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    #cookie-modal.open { display: flex; }
+    .cookie-modal-box {
+      background: #fff; border-radius: 12px;
+      max-width: 520px; width: 100%; padding: 36px;
+    }
+    .cookie-modal-box h3 {
+      font-family: "Montserrat", sans-serif; font-size: 18px;
+      font-weight: 800; color: #0e2442; margin-bottom: 20px;
+    }
+    .cookie-toggle-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 16px 0; border-bottom: 0.5px solid #e0ddd8;
+      gap: 20px;
+    }
+    .cookie-toggle-row:last-of-type { border-bottom: none; }
+    .cookie-toggle-label { font-size: 14px; font-weight: 600; color: #0e2442; margin-bottom: 4px; }
+    .cookie-toggle-desc { font-size: 12px; color: #666; line-height: 1.5; }
+    .cookie-toggle {
+      position: relative; width: 40px; height: 22px;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .cookie-toggle input { opacity: 0; width: 0; height: 0; }
+    .cookie-toggle-slider {
+      position: absolute; inset: 0; background: #ccc;
+      border-radius: 22px; cursor: pointer; transition: 0.2s;
+    }
+    .cookie-toggle input:checked + .cookie-toggle-slider { background: #C95C35; }
+    .cookie-toggle-slider::before {
+      content: ""; position: absolute;
+      width: 16px; height: 16px; left: 3px; bottom: 3px;
+      background: white; border-radius: 50%; transition: 0.2s;
+    }
+    .cookie-toggle input:checked + .cookie-toggle-slider::before { transform: translateX(18px); }
+    .cookie-modal-btns { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+    .cookie-modal-save {
+      background: #0e2442; color: #fff; border: none; cursor: pointer;
+      font-family: "Montserrat", sans-serif; font-size: 13px; font-weight: 700;
+      padding: 12px 28px; border-radius: 50px;
+    }
+    .cookie-modal-cancel {
+      background: transparent; color: #666; border: 1px solid #ddd;
+      cursor: pointer; font-size: 13px; padding: 12px 20px; border-radius: 50px;
+    }
+
+    /* ── WHATSAPP BUTTON ── */
+    #whatsapp-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      text-decoration: none; transition: transform 0.2s;
+    }
+    #whatsapp-btn:hover { transform: scale(1.08); }
+    #whatsapp-btn svg { width: 30px; height: 30px; }
+
+    @media (max-width: 640px) {
+      #cookie-banner { padding: 16px 20px; }
+      #whatsapp-btn { bottom: 80px; right: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -64,6 +163,49 @@ function toggleMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
 </script>
+
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner" style="display:none;">
+    <p>We use cookies to ensure the site works correctly and to understand how it's used. <a href="privacy.html">Learn more in our Privacy Policy</a>.</p>
+    <div class="cookie-btn-group">
+      <button class="cookie-btn-manage" onclick="openCookieModal()">Manage preferences</button>
+      <button class="cookie-btn-decline" onclick="setCookies('essential')">Essential only</button>
+      <button class="cookie-btn-accept" onclick="setCookies('all')">Accept all</button>
+    </div>
+  </div>
+
+  <!-- COOKIE MODAL -->
+  <div id="cookie-modal">
+    <div class="cookie-modal-box">
+      <h3>Cookie preferences</h3>
+      <div class="cookie-toggle-row">
+        <div>
+          <div class="cookie-toggle-label">Essential cookies</div>
+          <div class="cookie-toggle-desc">Required for the site to function. Cannot be disabled.</div>
+        </div>
+        <label class="cookie-toggle"><input type="checkbox" checked disabled /><span class="cookie-toggle-slider"></span></label>
+      </div>
+      <div class="cookie-toggle-row">
+        <div>
+          <div class="cookie-toggle-label">Analytics cookies</div>
+          <div class="cookie-toggle-desc">Help us understand how visitors use the site so we can improve it.</div>
+        </div>
+        <label class="cookie-toggle"><input type="checkbox" id="analytics-toggle" /><span class="cookie-toggle-slider"></span></label>
+      </div>
+      <div class="cookie-modal-btns">
+        <button class="cookie-modal-cancel" onclick="closeCookieModal()">Cancel</button>
+        <button class="cookie-modal-save" onclick="savePreferences()">Save preferences</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/441793378789" id="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.823 6.5L4 29l7.75-1.797A12.94 12.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="white"/>
+      <path d="M21.5 18.5c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#0e2442"/>
+    </svg>
+  </a>
 
   <!-- NAV -->
   <nav>
@@ -110,6 +252,7 @@ function toggleMenu() {
       <li><a href="about.html">About</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="terms.html">Terms &amp; Conditions</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
     </ul>
     <p class="footer-copy">&copy; 2026 Hublo Ltd. All rights reserved.</p>
   </footer>
