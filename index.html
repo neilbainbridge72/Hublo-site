@@ -671,7 +671,7 @@ function toggleMenu() {
       <a href="providers.html">For Providers</a>
       <a href="about.html">About</a>
       <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-book">Book Now</a>
+      <a href="#booking" class="nav-book">Book Now</a>
     </div>
     <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -682,12 +682,12 @@ function toggleMenu() {
     <a href="providers.html" onclick="toggleMenu()">For Providers</a>
     <a href="about.html" onclick="toggleMenu()">About</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
-    <a href="#contact" class="mobile-book" onclick="toggleMenu()">Book Now</a>
+    <a href="#contact" class="mobile-book" onclick="toggleMenu(); window.location.href='#booking'">Book Now</a>
     <div class="mobile-tagline">We organise everything so you don't have to</div>
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="booking">
     <div class="hero-inner">
 
     <!-- HEADLINE: right-aligned, above form -->
